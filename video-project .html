@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video-project</title>
+    <style>
+        :root{
+            --transition: all 1s linear;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .v-cont{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(60%);
+        }
+        header{
+            min-height: 100vh;
+            position:relative;
+            display: grid;
+            place-items:center;
+        }
+        h1{
+            font: 40px  "Franklin Gothic Medium" ;
+            color: white;
+        }
+        .btn{
+            position: relative;
+            border: none;
+            border-radius: 3px;
+            background-color: white;
+            padding: 10px 10px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .switch{
+            background-color:rgb(38, 183, 240);
+            width:50%;
+            display: inline-block;
+            height: 100%;
+            position: absolute;
+            right: 50%;
+            bottom: 0px;
+            border-radius: inherit;
+            transition: var(--transition);
+        }
+        .slide .switch{
+            left: 50%;
+            transition: var(--transition);
+        }
+        .pl{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            display:grid;
+            justify-content: center;
+            align-items: center;
+        }
+        .hpl{
+            visibility: hidden;
+        }
+        .visible{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="pl">
+        <img src="https://vannilla-js-basic-project-9-video-preloader.netlify.app/preloader.gif" alt="preloader">
+    </div> 
+    <header>
+        <video class="v-cont"  muted autoplay loop >
+            <source src="https://vannilla-js-basic-project-9-video-preloader.netlify.app/video.mp4" type="video/mp4"/>
+        </video>
+        <h1>Video Project</h1>
+        <button class="btn">
+            <span >Play&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span >&nbsp;&nbsp;&nbsp;Pause</span>
+            <span class="switch"></span>
+        </button>
+    </header>
+
+    <script>
+        const btn=document.querySelector(".btn");
+        const vcont=document.querySelector(".v-cont");
+
+        btn.addEventListener('click',function(){
+            if(!btn.classList.contains('slide')){
+                btn.classList.add('slide');
+                vcont.pause();
+            }else{
+                btn.classList.remove('slide');
+                vcont.play();
+            }
+        });
+        const pl=document.querySelector('.pl');
+        window.addEventListener('load',function(){
+            pl.classList.add('hpl');
+            btn.classList.add('visible');
+        });
+    </script>
+    
+</body>
+</html>
