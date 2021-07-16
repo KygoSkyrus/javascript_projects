@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>video-project</title>
+    
     <style>
         :root{
             --transition: all 1s linear;
@@ -93,26 +94,6 @@
             <span class="switch"></span>
         </button>
     </header>
-
-    <script>
-        const btn=document.querySelector(".btn");
-        const vcont=document.querySelector(".v-cont");
-
-        btn.addEventListener('click',function(){
-            if(!btn.classList.contains('slide')){
-                btn.classList.add('slide');
-                vcont.pause();
-            }else{
-                btn.classList.remove('slide');
-                vcont.play();
-            }
-        });
-        const pl=document.querySelector('.pl');
-        window.addEventListener('load',function(){
-            pl.classList.add('hpl');
-            btn.classList.add('visible');
-        });
-    </script>
-    
+    <script src="index.js"></script>
 </body>
 </html>
