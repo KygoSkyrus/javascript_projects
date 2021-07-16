@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    padding: 0;
+}
+#container{
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;  
+    padding:20px 0;   
+}
+#img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+p{
+    padding: 0 20px;
+    text-align: center;
+}
+#sign button{
+    border: none;
+    padding: 10px;
+    background-color:inherit;
+    color:#17a2b8;
+    font-size: 20px;
+    font-weight: 1000;
+    outline: none;
+}
+#by{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+@media (max-width:400px){
+    #container{
+        width: 300px;
+        height: fit-content;
+        padding: 20px 0;
+    }
+    h1{
+        padding-bottom: 0;
+    }
+}

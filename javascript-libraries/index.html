@@ -8,57 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="index.js"></script>
-    <style>
-        *{
-            margin:0;
-            padding: 0;
-        }
-        #container{
-            width: 600px;
-            height: 500px;
-            display: flex;
-            flex-direction: column ;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
-        h1{
-            text-align: center;  
-            padding:20px 0;   
-        }
-        #img{
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png);
-            background-position: center;
-            background-size:cover;
-            background-repeat: no-repeat;
-        }
-        p{
-            padding: 0 20px;
-            text-align: center;
-        }
-        #sign button{
-            border: none;
-            padding: 10px;
-            background-color:inherit;
-            color:#17a2b8;
-            font-size: 20px;
-            font-weight: 1000;
-            outline: none;
-        }
-        @media (max-width:400px){
-            #container{
-                width: 300px;
-                height: fit-content;
-                padding: 20px 0;
-            }
-            h1{
-                padding-bottom: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Libraries</h1>
@@ -73,5 +23,6 @@
         </div>
         <button class="btn btn-outline-primary" id="btn" onclick="fun()">Go Ahead</button>
     </div>
+    <p id="by">by kygoskyrus</p>
 </body>
 </html>
