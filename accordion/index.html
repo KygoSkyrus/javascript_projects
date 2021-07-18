@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>que-ans</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color:#efefef;
+        }
+        .container {
+            height: 300px;
+            width: 500px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 40px;
+            font-family:'Courier New', Courier, monospace;
+        }
+        p{
+            display: inline-block;
+            position: relative;
+            top: 7px;
+        }
+        .q{
+            width: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .ans {
+            background-color:white;
+            width: inherit;
+            border-radius: 0 0 6px 6px;
+            margin-bottom: 10px;
+            position: relative;
+            bottom: 30px;
+            padding: inherit;
+            display: none;
+        }
+        .show-text {
+            display: block;  
+        } 
+
+        .fa-minus-square{
+            display: none;
+        }
+        .show-minus{
+            display: block;
+            display: inline;
+        }
+        .hide-plus{
+            display: none;
+        }
+        .btn1{
+            outline: none;
+            border: none;
+            background-color: inherit;
+        }
+        .btn1:focus{
+            outline:none;
+            border: none;
+        }
+        @media (max-width:400px){
+            .container{
+                width:300px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Questions & answers</h1>
+
+        <div class="q">
+            <p>Do You Accept All Major Credit Cards?</p>
+            <button class="btn1">
+                <i class="fa fa-plus-square fa-lg"></i>
+                <i class="fa fa-minus-square fa-lg"></i>
+            </button>
+            
+        </div>
+        <div class="ans">
+            <hr id="hr"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, a fuga cupiditate dolore porro eligendi voluptatibus nulla rem, at, harum voluptas dolorem reprehenderit cumque itaque doloremque illum hic! Fuga, officia.</p>
+        </div>
+
+        <div class="q">
+            <p>Do You Suppport Local Farmers?</p>
+            <button class="btn1 ">
+                <i class="fa fa-plus-square fa-lg"></i>
+                <i class="fa fa-minus-square fa-lg"></i>
+            </button> 
+        </div>
+        <div  class="ans">
+            <hr id="hr"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, a fuga cupiditate dolore porro eligendi voluptatibus nulla rem, at, harum voluptas dolorem reprehenderit cumque itaque doloremque illum hic! Fuga, officia.</p>
+        </div>
+
+        <div class="q">
+            <p>Do You Use Organic Ingredients?</p>
+            <button  class="btn1">
+                <i class="fa fa-plus-square fa-lg"></i>
+                <i class="fa fa-minus-square fa-lg"></i>
+            </button> 
+        </div>
+        <div  class="ans">
+            <hr id="hr"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, a fuga cupiditate dolore porro eligendi voluptatibus nulla rem, at, harum voluptas dolorem reprehenderit cumque itaque doloremque illum hic! Fuga, officia.</p>
+        </div>
+        
+    </div>
+    <script>
+
+        var btns=document.querySelectorAll('.btn1');
+
+        btns.forEach(function(btn){
+            btn.addEventListener("click",fun);
+        });
+
+        function fun(){
+            btns.forEach(b=>b!=this && b.parentElement.nextElementSibling.classList.contains("show-text")&& b.click());
+            const ques =this.parentElement;
+            const ans= ques.nextElementSibling;
+
+            ans.classList.toggle("show-text");
+            this.querySelector('.fa-minus-square').classList.toggle("show-minus");
+            this.querySelector('.fa-plus-square').classList.toggle("hide-plus");
+        }
+    </script>
+</body>
+</html>
