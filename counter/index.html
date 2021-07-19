@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>counter</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #container{
+            width: 92vw;
+            height: 92vh;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            flex-direction: column ;
+            justify-content: center;
+            align-items: center;
+        }
+        h2{
+            font-size: 50px;
+        }
+        h1{
+            font-size: 100px;
+        }
+        #btn-cont{
+            padding: 20px;
+        }
+        button{
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Counter</h2>
+        <h1 id="num">0</h1>
+        <div id="btn-cont">
+            <button class="btn btn-outline-dark" id="inc" onclick="inc()">Increase</button>
+            <button class="btn btn-outline-dark" id="res" onclick="res()">Reset</button>
+            <button class="btn btn-outline-dark" id="decc" onclick="dec()">Decrease</button>
+        </div>
+    </div>
+    <script>
+        function inc(){
+            var x= document.getElementById('num').innerHTML;
+            x++;
+            document.getElementById('num').innerHTML=x; 
+            if(x>0){
+            document.getElementById('num').style.color="green";   
+            }else{
+                document.getElementById('num').style.color="red"
+            }  
+        }
+        function res(){
+            var x= document.getElementById('num').innerHTML;
+            document.getElementById('num').innerHTML=0;
+            document.getElementById('num').style.color="#343a40"; 
+              
+        }
+        function dec(){
+            var x= document.getElementById('num').innerHTML;
+            x--;
+            document.getElementById('num').innerHTML=x; 
+            if(x>0){
+            document.getElementById('num').style.color="green";   
+            }else{
+                document.getElementById('num').style.color="red"
+            }      
+        }
+    </script>
+    
+</body>
+</html>
