@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha512-44BdHEmN4wEBlGpEODyi8VehnYSn7JDvfm3Zjr+jldqf4twBfrHL5rXyk2pNmU66L+oiSHG4gadVPnOyBPxWig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>countdown</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+        body{
+            margin: 0;
+            height: 0;
+            box-sizing: border-box;
+            background-color: gray;
+            background: url(https://image.freepik.com/free-photo/simple-yellow-alarm-clock-minimalism-design-3d-render_165683-5.jpg) no-repeat center  fixed;
+            background-size: cover;
+        }
+        #container{
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            box-sizing: border-box;
+            position: fixed;
+        }
+        .box{
+            margin: 10px;
+            width: fit-content;
+            height: 100px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #7e58c4, #6a4aa5);
+            box-shadow:  10px 10px 20px #614396,-10px -10px 20px #8b61d8;     
+        }
+        section:first-child{
+            font-size: 40px;
+            letter-spacing: 2px;
+            font-family:"open sans";
+        }
+        section:last-child{
+            font-size: 20px;
+            font-family: roboto;
+        }
+        .cbc{
+            display: none;
+        }
+        article{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border-radius: 8px;
+            padding: 20px 15px;
+            box-shadow: 20px 20px 22px rgba(0,0, 0, 0.2),-20px -20px 22px rgba(0,0, 0, 0.2);
+            backdrop-filter: blur(3px);
+            position: fixed;
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            padding-left: 10px;
+            border: none;
+            outline: none;  
+            box-shadow: 20px 20px 22px rgba(0,0, 0, 0.2);
+            backdrop-filter: blur(20px);
+        }
+        .btn{
+            margin-top: 20px;
+            width: 200px;
+            color: white;
+        }
+        h1{
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bolder;
+            padding: 25px 0;    
+            animation-delay: 2s;
+            width: fit-content;
+            margin: 0 auto;
+            text-shadow: 0 0 4px;
+        }
+       /*//logo
+        #ks{
+            position: fixed;
+            bottom: 1px;
+            display: block;
+            padding: 4px 18px;
+            animation-iteration-count: infinite;
+            animation-duration: 3s;
+        }*/
+        @media (max-width:500px){
+            #container{
+                flex-direction: column;
+            }
+            #ks{
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box">
+            <section id="day">00</section>
+            <section class="a ">Days</section>
+        </div>
+        <div class="box">
+            <section id="hr">00</section>
+            <section class="b">Hours</section>
+        </div>
+        <div class="box">
+            <section id="min">00</section>
+            <section class="c">Mins</section>
+        </div>
+        <div class="box">
+            <section id="sec">00</section>
+            <section class="d">Secs</section>
+        </div>  
+    </div>
+    
+    <h1 class="animated hinge">CountDown</h1>
+
+    <article>
+    <input type="text" id="date" placeholder="date">
+    <input type="text" id="month" placeholder="month (in words)">
+    <input type="text" id="year" placeholder="year">
+    <input type="text" id="hours" placeholder="hours">
+    <input type="text" id="minutes" placeholder="minutes">
+    <input type="text" id="seconds" placeholder="seconds">
+    <button type="button" id="mybtn" class="btn btn-outline-danger">Begin</button>
+    </article>
+
+    <!--<div id="ks" class="animated wobble">KYGOSKYRUS</div>-->   
+    <!--add formvalidate -->
+    <script>
+        var btn=document.getElementById("mybtn");
+        btn.addEventListener("click",assign);
+        
+        function assign(){
+            var dd = $('#date').val();
+            var mm=$('#month').val();
+            var yy=$('#year').val();
+            var h=$('#hours').val();
+            var m=$('#minutes').val();
+            var s=$('#seconds').val();
+
+            var theDate=dd+mm+yy+" "+h+":"+m+":"+s;
+            var countDownDate = new Date(theDate).getTime();
+
+        setInterval(function fun(){
+            var now=new Date().getTime();
+            var timeleft=countDownDate-now;
+            var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+            document.getElementById("day").innerHTML = days ;
+            document.getElementById("hr").innerHTML = hours;
+            document.getElementById("min").innerHTML = minutes ;
+            document.getElementById("sec").innerHTML = seconds;
+            if(timeleft<0){
+                document.getElementById("day").innerHTML = "O";
+                document.getElementById("hr").innerHTML = "V";
+                document.getElementById("min").innerHTML = "E" ;
+                document.getElementById("sec").innerHTML = "R";
+
+                document.querySelector('.a').classList.add("cbc");
+                document.querySelector('.b').classList.add("cbc");
+                document.querySelector('.c').classList.add("cbc");
+                document.querySelector('.d').classList.add("cbc");
+            }            
+        },1000);
+
+        $("article").hide();
+        $("#container").css("visibility","visible");
+        $("body").css("background","none");
+        $("body").css("backgroundColor","#7652b7");
+        }
+        
+    </script>
+</body>
+</html>
